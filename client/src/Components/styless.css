@@ -1,0 +1,8 @@
+/* Ensure the image becomes responsive on smaller screens */
+@media (max-width: 768px) {
+    .responsiveee-image {
+      width: 100% !important;
+      height: auto !important; /* Ensure the aspect ratio is maintained */
+    }
+  }
+  
