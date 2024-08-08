@@ -1,4 +1,4 @@
-require("dotenv").config(); // Ensure this is at the very top
+require("dotenv").config(); 
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -9,9 +9,8 @@ const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const userdb = require("./model/userSchema");
 
-// Use environment variables
-const clientid = process.env.GOOGLE_CLIENT_ID;
-const clientsecret = process.env.GOOGLE_CLIENT_SECRET;
+const clientid = "872317649687-809tm7c9ptk338pm1i8188fnpsoqu214.apps.googleusercontent.com"
+const clientsecret = "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"
 
 
 app.get('/ping', (req, res) => {
