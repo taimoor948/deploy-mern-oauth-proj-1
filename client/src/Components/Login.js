@@ -4,7 +4,7 @@ import "./login.css"
 const Login = () => {
 
     const loginwithgoogle = ()=>{
-        window.open("http://localhost:6005/auth/google/callback","_self")
+        window.open("https://deploy-mern-oauth-proj-1-ui.vercel.app/auth/google/callback","_self")
     }
   return (
     <>
