@@ -13,6 +13,11 @@ const userdb = require("./model/userSchema");
 const clientid = process.env.GOOGLE_CLIENT_ID;
 const clientsecret = process.env.GOOGLE_CLIENT_SECRET;
 
+
+app.get('/ping', (req, res) => {
+    res.send('PONG');
+});
+
 app.use(cors({
     origin: "http://localhost:3000",
     methods: "GET,POST,PUT,DELETE",
