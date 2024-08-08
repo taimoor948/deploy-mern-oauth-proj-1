@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const getUser = async () => {
     try {
-        const response = await axios.get("http://localhost:6005/login/sucesss", { withCredentials: true });
+        const response = await axios.get("https://deploy-mern-oauth-proj-1-ui.vercel.app/login/sucesss", { withCredentials: true });
 
         console.log("response",response)
     } catch (error) {
