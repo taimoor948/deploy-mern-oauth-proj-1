@@ -9,7 +9,7 @@ const Headers = () => {
 
     const getUser = async () => {
         try {
-            const response = await axios.get("http://localhost:6005/login/sucess", { withCredentials: true });
+            const response = await axios.get("https://deploy-mern-oauth-proj-1.vercel.app/login/sucess", { withCredentials: true });
 
             setUserdata(response.data.user)
         } catch (error) {
@@ -19,7 +19,7 @@ const Headers = () => {
 
     // logoout
     const logout = ()=>{
-        window.open("http://localhost:6005/logout","_self")
+        window.open("https://deploy-mern-oauth-proj-1.vercel.app/logout","_self")
     }
 
     useEffect(() => {
