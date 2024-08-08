@@ -9,8 +9,8 @@ const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const userdb = require("./model/userSchema");
 
-const clientid =  "872317649687-809tm7c9ptk338pm1i8188fnpsoqu214.apps.googleusercontent.com";
-const clientsecret = "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";
+const clientid =  "";
+const clientsecret = "";
 
 // Health check endpoint
 app.get('/ping', (req, res) => {
