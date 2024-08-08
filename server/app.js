@@ -3,22 +3,23 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("./db/conn");
-const PORT = 6005;
+const PORT = 6005; // Use environment variable for PORT if available
 const session = require("express-session");
 const passport = require("passport");
 const OAuth2Strategy = require("passport-google-oauth2").Strategy;
 const userdb = require("./model/userSchema");
 
-const clientid = "872317649687-809tm7c9ptk338pm1i8188fnpsoqu214.apps.googleusercontent.com"
-const clientsecret = "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"
+const clientid =  "872317649687-809tm7c9ptk338pm1i8188fnpsoqu214.apps.googleusercontent.com";
+const clientsecret = "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";
 
-
+// Health check endpoint
 app.get('/ping', (req, res) => {
     res.send('PONG');
 });
 
+// CORS configuration
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: ["https://deploy-mern-oauth-proj-1-ui.vercel.app"],
     methods: "GET,POST,PUT,DELETE",
     credentials: true
 }));
@@ -39,7 +40,7 @@ passport.use(
     new OAuth2Strategy({
         clientID: clientid,
         clientSecret: clientsecret,
-        callbackURL: "/auth/google/callback",
+        callbackURL: "https://deploy-mern-oauth-proj-1.vercel.app/auth/google/callback",
         scope: ["profile", "email"]
     },
     async (accessToken, refreshToken, profile, done) => {
@@ -76,13 +77,13 @@ passport.deserializeUser((user, done) => {
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
 app.get("/auth/google/callback", passport.authenticate("google", {
-    successRedirect: "http://localhost:3000/dashboard",
-    failureRedirect: "http://localhost:3000/login"
+    successRedirect: "https://deploy-mern-oauth-proj-1-ui.vercel.app/dashboard",
+    failureRedirect: "https://deploy-mern-oauth-proj-1-ui.vercel.app/login"
 }));
 
 app.get("/login/success", async (req, res) => {
     if (req.user) {
-        res.status(200).json({ message: "user Login", user: req.user });
+        res.status(200).json({ message: "User Login", user: req.user });
     } else {
         res.status(400).json({ message: "Not Authorized" });
     }
@@ -91,7 +92,7 @@ app.get("/login/success", async (req, res) => {
 app.get("/logout", (req, res, next) => {
     req.logout(function (err) {
         if (err) { return next(err); }
-        res.redirect("http://localhost:3000");
+        res.redirect("https://deploy-mern-oauth-proj-1-ui.vercel.app");
     });
 });
 
